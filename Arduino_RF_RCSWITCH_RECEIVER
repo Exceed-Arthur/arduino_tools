@@ -1,0 +1,16 @@
+#include <RCSwitch.h>
+RCSwitch mySwitch = RCSwitch();
+
+void setup() {
+  Serial.begin(9600);
+  mySwitch.enableReceive(0); // Uses interrupt on pin 2 I beleive
+  Serial.println("ready");
+}
+
+void loop() {
+if (mySwitch.available()) {
+    Serial.print("Received ");
+    Serial.print( mySwitch.getReceivedValue() );
+    Serial.println("");
+  }
+}
